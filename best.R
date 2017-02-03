@@ -13,10 +13,12 @@ best<- function(state, outcome){
       }, "pneumonia"={
         column=23
       },stop("Invalid Outcome"))
+  #Select the related data from the whole dataset as per the inputs to the "Best" function
   selectdata<-data[data$State==state,c(2,column)]
   index<-which.min(selectdata[,2])
+  # Retrieve Hospital Name for the minimum value
   hospitalname<-selectdata[,1][index]
   return(hospitalname)
 }
+#Unit Test Cases
 best("TX","heart attack")
-source(best)
